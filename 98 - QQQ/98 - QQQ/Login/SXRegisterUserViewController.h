@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  SXRegisterUserViewController.h
 //  98 - QQQ
 //
 //  Created by 董 尚先 on 15/2/21.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface SXRegisterUserViewController : UIViewController
 
 @end
-

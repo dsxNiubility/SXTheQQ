@@ -9,10 +9,7 @@
 /* Begin PBXBuildFile section */
 		1D4C80841A98D2FF00039984 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4C80831A98D2FF00039984 /* main.m */; };
 		1D4C80871A98D2FF00039984 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4C80861A98D2FF00039984 /* AppDelegate.m */; };
-		1D4C808A1A98D2FF00039984 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4C80891A98D2FF00039984 /* ViewController.m */; };
-		1D4C808D1A98D2FF00039984 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D4C808B1A98D2FF00039984 /* Main.storyboard */; };
 		1D4C808F1A98D2FF00039984 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D4C808E1A98D2FF00039984 /* Images.xcassets */; };
-		1D4C80921A98D2FF00039984 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D4C80901A98D2FF00039984 /* LaunchScreen.xib */; };
 		1D4C809E1A98D2FF00039984 /* _8___QQQTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4C809D1A98D2FF00039984 /* _8___QQQTests.m */; };
 		1D4C84041A98DB9700039984 /* XMPPAnonymousAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4C829F1A98DB9700039984 /* XMPPAnonymousAuthentication.m */; };
 		1D4C84051A98DB9700039984 /* XMPPDeprecatedDigestAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4C82A21A98DB9700039984 /* XMPPDeprecatedDigestAuthentication.m */; };
@@ -155,6 +152,10 @@
 		1D4C84901A98DC4E00039984 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4C848F1A98DC4E00039984 /* Security.framework */; };
 		1D4C84921A98DC6000039984 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4C84911A98DC6000039984 /* libxml2.dylib */; };
 		1D4C84941A98DC6B00039984 /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4C84931A98DC6B00039984 /* libresolv.dylib */; };
+		1D4C849B1A98DF0100039984 /* SXXMPPTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4C849A1A98DF0100039984 /* SXXMPPTools.m */; };
+		1D4C849E1A98DF9400039984 /* SXLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4C849D1A98DF9400039984 /* SXLoginViewController.m */; };
+		1D4C84A11A98DFBA00039984 /* SXRegisterUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4C84A01A98DFBA00039984 /* SXRegisterUserViewController.m */; };
+		1D4C84A31A98DFC900039984 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D4C84A21A98DFC900039984 /* Login.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,11 +174,7 @@
 		1D4C80831A98D2FF00039984 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1D4C80851A98D2FF00039984 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1D4C80861A98D2FF00039984 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1D4C80881A98D2FF00039984 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		1D4C80891A98D2FF00039984 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		1D4C808C1A98D2FF00039984 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1D4C808E1A98D2FF00039984 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		1D4C80911A98D2FF00039984 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		1D4C80971A98D2FF00039984 /* 98 - QQQTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "98 - QQQTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D4C809C1A98D2FF00039984 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D4C809D1A98D2FF00039984 /* _8___QQQTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "_8___QQQTests.m"; sourceTree = "<group>"; };
@@ -470,6 +467,13 @@
 		1D4C848F1A98DC4E00039984 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1D4C84911A98DC6000039984 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		1D4C84931A98DC6B00039984 /* libresolv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libresolv.dylib; path = usr/lib/libresolv.dylib; sourceTree = SDKROOT; };
+		1D4C84991A98DF0100039984 /* SXXMPPTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXXMPPTools.h; sourceTree = "<group>"; };
+		1D4C849A1A98DF0100039984 /* SXXMPPTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXXMPPTools.m; sourceTree = "<group>"; };
+		1D4C849C1A98DF9400039984 /* SXLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXLoginViewController.h; sourceTree = "<group>"; };
+		1D4C849D1A98DF9400039984 /* SXLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXLoginViewController.m; sourceTree = "<group>"; };
+		1D4C849F1A98DFBA00039984 /* SXRegisterUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXRegisterUserViewController.h; sourceTree = "<group>"; };
+		1D4C84A01A98DFBA00039984 /* SXRegisterUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXRegisterUserViewController.m; sourceTree = "<group>"; };
+		1D4C84A21A98DFC900039984 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -516,15 +520,14 @@
 		1D4C80801A98D2FF00039984 /* 98 - QQQ */ = {
 			isa = PBXGroup;
 			children = (
+				1D4C84961A98DEEE00039984 /* IM */,
+				1D4C84971A98DEEE00039984 /* Login */,
+				1D4C84981A98DEEE00039984 /* Tools */,
 				1D4C84951A98DCD300039984 /* Other */,
 				1D4C829A1A98DB9700039984 /* Libs */,
 				1D4C80851A98D2FF00039984 /* AppDelegate.h */,
 				1D4C80861A98D2FF00039984 /* AppDelegate.m */,
-				1D4C80881A98D2FF00039984 /* ViewController.h */,
-				1D4C80891A98D2FF00039984 /* ViewController.m */,
-				1D4C808B1A98D2FF00039984 /* Main.storyboard */,
 				1D4C808E1A98D2FF00039984 /* Images.xcassets */,
-				1D4C80901A98D2FF00039984 /* LaunchScreen.xib */,
 				1D4C80811A98D2FF00039984 /* Supporting Files */,
 			);
 			path = "98 - QQQ";
@@ -1435,6 +1438,34 @@
 			name = Other;
 			sourceTree = "<group>";
 		};
+		1D4C84961A98DEEE00039984 /* IM */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = IM;
+			sourceTree = "<group>";
+		};
+		1D4C84971A98DEEE00039984 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				1D4C84A21A98DFC900039984 /* Login.storyboard */,
+				1D4C849C1A98DF9400039984 /* SXLoginViewController.h */,
+				1D4C849D1A98DF9400039984 /* SXLoginViewController.m */,
+				1D4C849F1A98DFBA00039984 /* SXRegisterUserViewController.h */,
+				1D4C84A01A98DFBA00039984 /* SXRegisterUserViewController.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		1D4C84981A98DEEE00039984 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				1D4C84991A98DF0100039984 /* SXXMPPTools.h */,
+				1D4C849A1A98DF0100039984 /* SXXMPPTools.m */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1479,6 +1510,7 @@
 		1D4C80761A98D2FF00039984 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = SX;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = shangxianDante;
 				TargetAttributes = {
@@ -1515,9 +1547,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D4C84A31A98DFC900039984 /* Login.storyboard in Resources */,
 				1D4C848B1A98DB9700039984 /* build-libidn.sh in Resources */,
-				1D4C808D1A98D2FF00039984 /* Main.storyboard in Resources */,
-				1D4C80921A98D2FF00039984 /* LaunchScreen.xib in Resources */,
 				1D4C84861A98DB9700039984 /* README.txt in Resources */,
 				1D4C808F1A98D2FF00039984 /* Images.xcassets in Resources */,
 			);
@@ -1549,7 +1580,6 @@
 				1D4C844B1A98DB9700039984 /* TURNSocket.m in Sources */,
 				1D4C84681A98DB9700039984 /* XMPPAutoPing.m in Sources */,
 				1D4C841B1A98DB9700039984 /* XMPPReconnect.m in Sources */,
-				1D4C808A1A98D2FF00039984 /* ViewController.m in Sources */,
 				1D4C84271A98DB9700039984 /* XMPPIQ+JabberRPCResonse.m in Sources */,
 				1D4C84231A98DB9700039984 /* XMPPUserMemoryStorageObject.m in Sources */,
 				1D4C84191A98DB9700039984 /* XMPPGoogleSharedStatus.m in Sources */,
@@ -1572,6 +1602,7 @@
 				1D4C84441A98DB9700039984 /* XMPPvCardTempLabel.m in Sources */,
 				1D4C843C1A98DB9700039984 /* XMPPvCardCoreDataStorage.m in Sources */,
 				1D4C84401A98DB9700039984 /* XMPPvCardTempAdr.m in Sources */,
+				1D4C84A11A98DFBA00039984 /* SXRegisterUserViewController.m in Sources */,
 				1D4C847E1A98DB9700039984 /* DDAbstractDatabaseLogger.m in Sources */,
 				1D4C84841A98DB9700039984 /* DDDispatchQueueLogFormatter.m in Sources */,
 				1D4C841C1A98DB9700039984 /* XMPPGroupCoreDataStorageObject.m in Sources */,
@@ -1670,6 +1701,8 @@
 				1D4C84161A98DB9700039984 /* XMPPStream.m in Sources */,
 				1D4C84421A98DB9700039984 /* XMPPvCardTempBase.m in Sources */,
 				1D4C845F1A98DB9700039984 /* XMPPvCardAvatarModule.m in Sources */,
+				1D4C849B1A98DF0100039984 /* SXXMPPTools.m in Sources */,
+				1D4C849E1A98DF9400039984 /* SXLoginViewController.m in Sources */,
 				1D4C84621A98DB9700039984 /* XMPPMessage+XEP_0184.m in Sources */,
 				1D4C80841A98D2FF00039984 /* main.m in Sources */,
 				1D4C844A1A98DB9700039984 /* XMPPPubSub.m in Sources */,
@@ -1694,25 +1727,6 @@
 			targetProxy = 1D4C80981A98D2FF00039984 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		1D4C808B1A98D2FF00039984 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1D4C808C1A98D2FF00039984 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		1D4C80901A98D2FF00039984 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1D4C80911A98D2FF00039984 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1D4C809F1A98D2FF00039984 /* Debug */ = {
@@ -1795,6 +1809,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -1818,6 +1833,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -1890,6 +1906,7 @@
 				1D4C80A31A98D2FF00039984 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1D4C80A41A98D2FF00039984 /* Build configuration list for PBXNativeTarget "98 - QQQTests" */ = {
 			isa = XCConfigurationList;
@@ -1898,6 +1915,7 @@
 				1D4C80A61A98D2FF00039984 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
