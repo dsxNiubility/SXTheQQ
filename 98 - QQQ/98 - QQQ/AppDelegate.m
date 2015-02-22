@@ -33,6 +33,9 @@
     
     // 根据系统偏好中的内容 & 登录情况，决定显示那一个视图控制器
 #warning failed没有测试
+    
+    // 那个errormessage在哪填写了
+    // 为什么非要在主线程发送通知
     if (![[SXXMPPTools sharedXMPPTools] connectionWithFailed:nil]) {
         // 显示登录视图控制器
         UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
@@ -45,7 +48,7 @@
     return YES;
 }
 
-// 登录状态变化
+/** 登陆状态改变调用 */
 - (void)loginStatus {
     NSLog(@"接收到通知 %@", [NSThread currentThread]);
     

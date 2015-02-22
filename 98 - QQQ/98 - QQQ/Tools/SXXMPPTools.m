@@ -22,6 +22,7 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
 
 @interface SXXMPPTools ()<XMPPStreamDelegate>
 
+/** 存储失败的回掉 */
 @property(nonatomic,strong) void (^failed) (NSString * errorMessage);
 
 @end
@@ -30,6 +31,7 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
 
 @synthesize xmppStream = _xmppStream;
 
+#pragma mark - ******************** 懒加载
 - (XMPPStream *)xmppStream
 {
     if (_xmppStream == nil) {
@@ -39,6 +41,7 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
     return _xmppStream;
 }
 
+#pragma mark - ******************** 单例方法
 + (instancetype)sharedXMPPTools {
     static SXXMPPTools *instance;
     
@@ -49,12 +52,14 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
     return instance;
 }
 
-
+#pragma mark - ******************** 连接方法
+/** 断开连接 */
 - (void)disconnect
 {
     [self.xmppStream disconnect];
 }
 
+/** 连接方法有失败block回调 */
 - (BOOL)connectionWithFailed:(void (^)(NSString *errorMessage))failed
 {
     // 需要指定myJID & hostName
@@ -81,7 +86,8 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
     return YES;
 }
 
-
+#pragma mark - ******************** xmpp流代理方法
+/** 连接成功时调用 */
 - (void)xmppStreamDidConnect:(XMPPStream *)sender
 {
     NSLog(@"连接成功");
@@ -91,6 +97,7 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
     [self.xmppStream authenticateWithPassword:password error:NULL];
 }
 
+/** 断开连接时调用 */
 - (void)xmppStreamDidDisconnect:(XMPPStream *)sender withError:(NSError *)error
 {
     NSLog(@"断开连接");
@@ -101,6 +108,7 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
     }
 }
 
+/** 授权成功时调用 */
 - (void)xmppStreamDidAuthenticate:(XMPPStream *)sender
 {
     NSLog(@"授权成功");
@@ -111,6 +119,7 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
     });
 }
 
+/** 授权失败时调用 */
 -(void)xmppStream:(XMPPStream *)sender didNotAuthenticate:(DDXMLElement *)error
 {
     NSLog(@"授权失败");
@@ -126,7 +135,7 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
     }
 }
 
-// 清理用户偏好
+/** 清除用户的偏好 */
 - (void)clearUserDefaults
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults]; // $$$$$
@@ -135,6 +144,7 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
     [defaults removeObjectForKey:SXLoginPasswordKey];
     [defaults removeObjectForKey:SXLoginHostnameKey];
     
+    // 刚存完偏好设置，必须同步一下
     [defaults synchronize];
 }
 
