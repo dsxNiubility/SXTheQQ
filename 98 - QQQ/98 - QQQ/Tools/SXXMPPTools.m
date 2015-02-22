@@ -118,7 +118,16 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
     
     NSString *password = [[NSUserDefaults standardUserDefaults] valueForKey:SXLoginPasswordKey];
     
-    [self.xmppStream authenticateWithPassword:password error:NULL];
+    if (self.isRegisterUser) {
+        // 将用户密码发送给服务器，进行用户注册
+        [self.xmppStream registerWithPassword:password error:NULL];
+        
+        // 将注册标记复位
+        self.isRegisterUser = NO;
+    } else {
+        // 将用户密码发送给服务器，进行用户登录
+        [self.xmppStream authenticateWithPassword:password error:NULL];
+    }
 }
 
 /** 断开连接时调用 */
@@ -165,6 +174,30 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:SXLoginResultNotification object:@(NO)];
     });
+}
+
+/** 注册成功 */
+- (void)xmppStreamDidRegister:(XMPPStream *)sender
+{
+    NSLog(@"注册成功");
+    
+    // 让用户上线
+    [self goOnline];
+    
+    // 发送通知，切换控制器
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:SXLoginResultNotification object:@(YES)];
+    });
+}
+
+/** 注册失败 */
+- (void)xmppStream:(XMPPStream *)sender didNotRegister:(DDXMLElement *)error
+{
+    NSLog(@"注册失败");
+    
+    if (self.failed) {
+        dispatch_async(dispatch_get_main_queue(), ^ {self.failed(@"您申请的账号已经被占用！");});
+    }
 }
 
 /** 清除用户的偏好 */

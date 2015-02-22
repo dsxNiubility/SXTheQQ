@@ -21,6 +21,9 @@ extern NSString *const SXLoginResultNotification;
 
 @interface SXXMPPTools : NSObject
 
+// 是否是注册用户的标记
+@property (nonatomic, assign) BOOL isRegisterUser;
+
 @property(nonatomic,strong,readonly) XMPPStream * xmppStream;
 + (instancetype)sharedXMPPTools;
 

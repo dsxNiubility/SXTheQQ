@@ -128,16 +128,25 @@
                                 <rect key="frame" x="16" y="28" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textChanged" destination="Gnu-To-x4w" eventType="editingChanged" id="eb2-Oc-YYb"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="服务器地址" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0kX-qm-OMy">
                                 <rect key="frame" x="16" y="104" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textChanged" destination="Gnu-To-x4w" eventType="editingChanged" id="l2P-xE-JUN"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="用户密码" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="eZi-hd-d42">
                                 <rect key="frame" x="16" y="66" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="textChanged" destination="Gnu-To-x4w" eventType="editingChanged" id="N12-hB-uzo"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XvD-Nd-xiN">
                                 <rect key="frame" x="16" y="142" width="568" height="30"/>
@@ -149,6 +158,9 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted" backgroundImage="login_btn_blue_press"/>
+                                <connections>
+                                    <action selector="regisgerUser" destination="Gnu-To-x4w" eventType="touchUpInside" id="ezy-E7-itv"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pur-6h-Y9R">
                                 <rect key="frame" x="467" y="180" width="117" height="28"/>
@@ -186,6 +198,12 @@
                             <constraint firstItem="eZi-hd-d42" firstAttribute="trailing" secondItem="lrp-K3-M8A" secondAttribute="trailingMargin" id="zQF-3N-1C5"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="hostNameText" destination="0kX-qm-OMy" id="TPh-ca-oee"/>
+                        <outlet property="nameText" destination="ueX-fE-Y0B" id="Lyy-qS-tSS"/>
+                        <outlet property="passwordText" destination="eZi-hd-d42" id="UbU-ju-Qdp"/>
+                        <outlet property="registerButton" destination="XvD-Nd-xiN" id="wzU-oo-z1O"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u4Y-CH-FG4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
