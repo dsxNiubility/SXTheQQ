@@ -157,6 +157,7 @@
 		1D4C84A11A98DFBA00039984 /* SXRegisterUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4C84A01A98DFBA00039984 /* SXRegisterUserViewController.m */; };
 		1D4C84A31A98DFC900039984 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D4C84A21A98DFC900039984 /* Login.storyboard */; };
 		1DC4F0541A9992CC00BDA404 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DC4F0531A9992CC00BDA404 /* Main.storyboard */; };
+		1DC4F0571A9A295B00BDA404 /* SXMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC4F0561A9A295B00BDA404 /* SXMainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -476,6 +477,8 @@
 		1D4C84A01A98DFBA00039984 /* SXRegisterUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXRegisterUserViewController.m; sourceTree = "<group>"; };
 		1D4C84A21A98DFC900039984 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		1DC4F0531A9992CC00BDA404 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		1DC4F0551A9A295B00BDA404 /* SXMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXMainViewController.h; sourceTree = "<group>"; };
+		1DC4F0561A9A295B00BDA404 /* SXMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXMainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1444,6 +1447,8 @@
 			isa = PBXGroup;
 			children = (
 				1DC4F0531A9992CC00BDA404 /* Main.storyboard */,
+				1DC4F0551A9A295B00BDA404 /* SXMainViewController.h */,
+				1DC4F0561A9A295B00BDA404 /* SXMainViewController.m */,
 			);
 			path = IM;
 			sourceTree = "<group>";
@@ -1632,6 +1637,7 @@
 				1D4C84731A98DB9700039984 /* XMPPMessage+XEP_0308.m in Sources */,
 				1D4C843B1A98DB9700039984 /* XMPPvCardAvatarCoreDataStorageObject.m in Sources */,
 				1D4C844D1A98DB9700039984 /* XMPPMessage+XEP_0066.m in Sources */,
+				1DC4F0571A9A295B00BDA404 /* SXMainViewController.m in Sources */,
 				1D4C842A1A98DB9700039984 /* XMPPLastActivity.m in Sources */,
 				1D4C84211A98DB9700039984 /* XMPPResourceMemoryStorageObject.m in Sources */,
 				1D4C842F1A98DB9700039984 /* XMPPRoomOccupantCoreDataStorageObject.m in Sources */,

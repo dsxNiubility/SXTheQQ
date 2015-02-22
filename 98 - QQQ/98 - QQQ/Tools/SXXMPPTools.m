@@ -56,6 +56,9 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
 /** 断开连接 */
 - (void)disconnect
 {
+    // 通知服务器，用户下线
+    [self goOffline];
+    
     [self.xmppStream disconnect];
 }
 
@@ -86,6 +89,27 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
     return YES;
 }
 
+#pragma mark - ******************** 用户的上线和下线
+- (void)goOnline {
+    XMPPPresence *p = [XMPPPresence presence];
+    
+    [self.xmppStream sendElement:p];
+}
+
+- (void)goOffline {
+    XMPPPresence *p = [XMPPPresence presenceWithType:@"unavailable"];
+    
+    [self.xmppStream sendElement:p];
+}
+
+- (void)logout {
+    // 所有用户信息是保存在用户偏好，注销应该删除用户偏好记录
+    [self clearUserDefaults];
+    
+    // 下线，并且断开连接
+    [self disconnect];
+}
+
 #pragma mark - ******************** xmpp流代理方法
 /** 连接成功时调用 */
 - (void)xmppStreamDidConnect:(XMPPStream *)sender
@@ -113,9 +137,12 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
 {
     NSLog(@"授权成功");
     
+    // 通知服务器用户上线
+    [self goOnline];
+    
     // 在主线程利用通知发送广播
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:SXLoginResultNotification object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:SXLoginResultNotification object:@(YES)];
     });
 }
 
@@ -133,6 +160,11 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
     if (self.failed) {
         dispatch_async(dispatch_get_main_queue(), ^ {self.failed(@"用户名或者密码错误！");});
     }
+    
+    // 在主线程利用通知发送广播
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:SXLoginResultNotification object:@(NO)];
+    });
 }
 
 /** 清除用户的偏好 */

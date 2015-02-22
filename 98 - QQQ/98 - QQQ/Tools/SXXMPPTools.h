@@ -26,4 +26,9 @@ extern NSString *const SXLoginResultNotification;
 
 - (BOOL)connectionWithFailed:(void (^)(NSString *errorMessage))failed;
 
+- (void)disconnect;
+
+// $$$$$
+- (void)logout;
+
 @end

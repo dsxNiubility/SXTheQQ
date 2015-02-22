@@ -10,6 +10,7 @@
 
 @interface SXRegisterUserViewController ()
 
+
 @end
 
 @implementation SXRegisterUserViewController
