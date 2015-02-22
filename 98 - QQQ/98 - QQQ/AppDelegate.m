@@ -18,15 +18,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults removeObjectForKey:SXLoginUserNameKey];
-    [defaults removeObjectForKey:SXLoginPasswordKey];
-    [defaults removeObjectForKey:SXLoginHostnameKey];
-    [defaults synchronize];
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    [defaults removeObjectForKey:SXLoginUserNameKey];
+//    [defaults removeObjectForKey:SXLoginPasswordKey];
+//    [defaults removeObjectForKey:SXLoginHostnameKey];
+//    [defaults synchronize];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     
+    
+    // 注册通知，监听连接登录的状态
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginStatus) name:SXLoginResultNotification object:nil];
     
     // 根据系统偏好中的内容 & 登录情况，决定显示那一个视图控制器
 #warning failed没有测试
@@ -42,7 +45,16 @@
     return YES;
 }
 
-
+// 登录状态变化
+- (void)loginStatus {
+    NSLog(@"接收到通知 %@", [NSThread currentThread]);
+    
+    // 成功
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    // 切换视图控制器
+    self.window.rootViewController = sb.instantiateInitialViewController;
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

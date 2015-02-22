@@ -104,6 +104,11 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
 - (void)xmppStreamDidAuthenticate:(XMPPStream *)sender
 {
     NSLog(@"授权成功");
+    
+    // 在主线程利用通知发送广播
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:SXLoginResultNotification object:nil];
+    });
 }
 
 -(void)xmppStream:(XMPPStream *)sender didNotAuthenticate:(DDXMLElement *)error
