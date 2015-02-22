@@ -181,13 +181,17 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
 {
     NSLog(@"注册成功");
     
-    // 让用户上线
-    [self goOnline];
+    [self logout];
+    [self clearUserDefaults];
+//    // 让用户上线
+//    [self goOnline];
     
     // 发送通知，切换控制器
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:SXLoginResultNotification object:@(YES)];
+        [[NSNotificationCenter defaultCenter] postNotificationName:SXLoginResultNotification object:@(NO)];
     });
+    
+    dispatch_async(dispatch_get_main_queue(), ^ {self.failed(@"注册成功！～请登录");});
 }
 
 /** 注册失败 */
