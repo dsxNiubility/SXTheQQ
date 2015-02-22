@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "SXXMPPTools.h"
 
 @interface AppDelegate ()
 
@@ -16,9 +17,32 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:SXLoginUserNameKey];
+    [defaults removeObjectForKey:SXLoginPasswordKey];
+    [defaults removeObjectForKey:SXLoginHostnameKey];
+    [defaults synchronize];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    
+    // 根据系统偏好中的内容 & 登录情况，决定显示那一个视图控制器
+#warning failed没有测试
+    if (![[SXXMPPTools sharedXMPPTools] connectionWithFailed:nil]) {
+        // 显示登录视图控制器
+        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+        
+        self.window.rootViewController = sb.instantiateInitialViewController;
+    }
+    
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

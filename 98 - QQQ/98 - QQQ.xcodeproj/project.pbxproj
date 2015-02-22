@@ -156,6 +156,7 @@
 		1D4C849E1A98DF9400039984 /* SXLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4C849D1A98DF9400039984 /* SXLoginViewController.m */; };
 		1D4C84A11A98DFBA00039984 /* SXRegisterUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4C84A01A98DFBA00039984 /* SXRegisterUserViewController.m */; };
 		1D4C84A31A98DFC900039984 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D4C84A21A98DFC900039984 /* Login.storyboard */; };
+		1DC4F0541A9992CC00BDA404 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DC4F0531A9992CC00BDA404 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -474,6 +475,7 @@
 		1D4C849F1A98DFBA00039984 /* SXRegisterUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXRegisterUserViewController.h; sourceTree = "<group>"; };
 		1D4C84A01A98DFBA00039984 /* SXRegisterUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXRegisterUserViewController.m; sourceTree = "<group>"; };
 		1D4C84A21A98DFC900039984 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		1DC4F0531A9992CC00BDA404 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1441,6 +1443,7 @@
 		1D4C84961A98DEEE00039984 /* IM */ = {
 			isa = PBXGroup;
 			children = (
+				1DC4F0531A9992CC00BDA404 /* Main.storyboard */,
 			);
 			path = IM;
 			sourceTree = "<group>";
@@ -1548,6 +1551,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D4C84A31A98DFC900039984 /* Login.storyboard in Resources */,
+				1DC4F0541A9992CC00BDA404 /* Main.storyboard in Resources */,
 				1D4C848B1A98DB9700039984 /* build-libidn.sh in Resources */,
 				1D4C84861A98DB9700039984 /* README.txt in Resources */,
 				1D4C808F1A98D2FF00039984 /* Images.xcassets in Resources */,

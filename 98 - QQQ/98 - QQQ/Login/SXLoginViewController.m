@@ -7,6 +7,7 @@
 //
 
 #import "SXLoginViewController.h"
+#import "SXXMPPTools.h"
 
 @interface SXLoginViewController ()
 
@@ -44,6 +45,18 @@
 
 // 用户登录
 - (IBAction)login {
+    // 保存至用户偏好
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:self.nameText.text forKey:SXLoginUserNameKey];
+    [defaults setObject:self.passwordText.text forKey:SXLoginPasswordKey];
+    [defaults setObject:self.hostNameText.text forKey:SXLoginHostnameKey];
+    
+    [defaults synchronize];
+    
+    // 连接服务器开始登录
+    [[SXXMPPTools sharedXMPPTools] connectionWithFailed:^(NSString *errorMessage) {
+        [[[UIAlertView alloc] initWithTitle:@"提示" message:errorMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
+    }];
 }
 
 @end
