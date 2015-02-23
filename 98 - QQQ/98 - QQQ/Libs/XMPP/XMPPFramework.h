@@ -31,7 +31,7 @@
 // 
 //#import "XMPPCoreDataStorage.h"
 //
-//#import "XMPPReconnect.h"
+#import "XMPPReconnect.h"
 //
 //#import "XMPPRoster.h"
 //#import "XMPPRosterMemoryStorage.h"

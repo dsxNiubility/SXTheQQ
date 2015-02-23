@@ -25,22 +25,49 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
 /** 存储失败的回掉 */
 @property(nonatomic,strong) void (^failed) (NSString * errorMessage);
 
+// 重新连接模块
+@property (nonatomic, strong) XMPPReconnect *xmppReconnect;
+
 @end
 
 @implementation SXXMPPTools
 
 @synthesize xmppStream = _xmppStream;
 
+- (void)dealloc
+{
+    [self teardownXmppStream];
+}
+
 #pragma mark - ******************** 懒加载
 - (XMPPStream *)xmppStream
 {
     if (_xmppStream == nil) {
         _xmppStream = [[XMPPStream alloc]init];
+        
+        // 实例化
+        _xmppReconnect = [[XMPPReconnect alloc]init];
+        // 激活
+        [_xmppReconnect activate:_xmppStream];
+        
         [_xmppStream addDelegate:self delegateQueue:dispatch_get_global_queue(0, 0)];
     }
     return _xmppStream;
 }
 
+/** 销毁调用 */
+- (void)teardownXmppStream
+{
+    // 删除代理 禁用模块 清理缓存
+    [self.xmppStream removeDelegate:self];
+    
+    // 取消激活
+    [self.xmppReconnect deactivate];
+    
+    _xmppReconnect = nil;
+    _xmppStream = nil;
+    
+}
 #pragma mark - ******************** 单例方法
 + (instancetype)sharedXMPPTools {
     static SXXMPPTools *instance;
