@@ -97,7 +97,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EPj-n2-xLE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1722" y="-297"/>
+            <point key="canvasLocation" x="1770" y="-322"/>
         </scene>
         <!--Add FriendV Controller-->
         <scene sceneID="okH-kM-o0c">
@@ -133,7 +133,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="84i-2D-Kym" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2530" y="-269"/>
+            <point key="canvasLocation" x="2482" y="-314"/>
         </scene>
         <!--动态-->
         <scene sceneID="KnJ-Rf-8bL">

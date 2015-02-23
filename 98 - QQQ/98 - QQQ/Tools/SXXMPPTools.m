@@ -20,7 +20,7 @@ NSString *const SXLoginHostnameKey = @"SXLoginHostnameKey";
 // 通知字符串定义
 NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
 
-@interface SXXMPPTools ()<XMPPStreamDelegate>
+@interface SXXMPPTools ()<XMPPStreamDelegate,XMPPRosterDelegate>
 
 /** 存储失败的回掉 */
 @property(nonatomic,strong) void (^failed) (NSString * errorMessage);
@@ -49,6 +49,9 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
         _xmppReconnect = [[XMPPReconnect alloc]init];
         _xmppRosterCoreDataStorage = [XMPPRosterCoreDataStorage sharedInstance];
         _xmppRoster = [[XMPPRoster alloc]initWithRosterStorage:_xmppRosterCoreDataStorage dispatchQueue:dispatch_get_global_queue(0, 0)];
+        
+        // 取消接收自动订阅功能，需要确认才能够添加好友！
+        _xmppRoster.autoAcceptKnownPresenceSubscriptionRequests = NO;
         
         // 激活
         [_xmppReconnect activate:_xmppStream];
@@ -252,5 +255,29 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
     // 刚存完偏好设置，必须同步一下
     [defaults synchronize];
 }
+
+#pragma mark - XMPP花名册代理
+// 接收到订阅请求
+- (void)xmppRoster:(XMPPRoster *)sender didReceivePresenceSubscriptionRequest:(XMPPPresence *)presence {
+    // 通过代理同样可以知道好友的请求
+    
+    NSString *msg = [NSString stringWithFormat:@"%@请求添加为好友，是否确认", presence.from];
+    
+    // 1. 实例化
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:msg preferredStyle:UIAlertControllerStyleAlert];
+    
+    // 2. 添加方法
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        // 接受好友请求
+        [self.xmppRoster acceptPresenceSubscriptionRequestFrom:presence.from andAddToRoster:YES];// $$$$$
+    }]];
+    
+    // 3. 展现
+    UIViewController *vc = [UIApplication sharedApplication].keyWindow.rootViewController;
+    [vc presentViewController:alert animated:YES completion:nil];
+}
+
 
 @end
