@@ -98,6 +98,7 @@
 }
 
 - (NSString *)userStatusWithSection:(NSInteger)section {
+    NSLog(@"%zd",section);
     // section
     // 0 在线
     // 1 离开

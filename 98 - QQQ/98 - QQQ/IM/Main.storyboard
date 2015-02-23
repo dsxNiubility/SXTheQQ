@@ -229,7 +229,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ibV-C1-PSr">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="507"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCell" id="Qw4-on-Kck">
@@ -246,7 +246,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nuj-co-9I5">
-                                <rect key="frame" x="0.0" y="507" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ez3-vG-bRj">
                                         <rect key="frame" x="8" y="5" width="34" height="34"/>
@@ -313,16 +313,16 @@
                         <constraints>
                             <constraint firstItem="nuj-co-9I5" firstAttribute="top" secondItem="ibV-C1-PSr" secondAttribute="bottom" id="02N-uu-iP4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nuj-co-9I5" secondAttribute="trailing" constant="-16" id="2QW-gb-60I"/>
-                            <constraint firstItem="fD6-0q-tbH" firstAttribute="top" secondItem="nuj-co-9I5" secondAttribute="bottom" id="DA7-QC-LzT"/>
                             <constraint firstItem="nuj-co-9I5" firstAttribute="leading" secondItem="9ld-an-TmU" secondAttribute="leadingMargin" constant="-16" id="IsT-xT-Ug4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ibV-C1-PSr" secondAttribute="trailing" constant="-16" id="MqY-wb-XHl"/>
                             <constraint firstItem="ibV-C1-PSr" firstAttribute="top" secondItem="9ld-an-TmU" secondAttribute="topMargin" id="Otx-om-gVb"/>
                             <constraint firstItem="ibV-C1-PSr" firstAttribute="leading" secondItem="9ld-an-TmU" secondAttribute="leadingMargin" constant="-16" id="Xt2-8I-YcA"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="nuj-co-9I5" secondAttribute="bottom" id="d05-Ks-ODr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="A3u-pD-alh"/>
                     <connections>
-                        <outlet property="inputViewBottomConstraint" destination="DA7-QC-LzT" id="YAv-Vh-V9F"/>
+                        <outlet property="inputViewBottomConstraint" destination="d05-Ks-ODr" id="lm7-97-HiQ"/>
                         <outlet property="tableView" destination="ibV-C1-PSr" id="8Vm-Dj-fl8"/>
                         <outlet property="textView" destination="jCO-Yu-NZi" id="kHo-e7-1yU"/>
                     </connections>

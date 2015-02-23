@@ -40,6 +40,7 @@
     // 如果没找到 NSNotFound，不要写0
     if (range.location == NSNotFound) {
         name = [name stringByAppendingFormat:@"@%@", [SXXMPPTools sharedXMPPTools].xmppStream.myJID.domain];
+   
     }
     
     // 如果已经是好友就不需要再次添加
