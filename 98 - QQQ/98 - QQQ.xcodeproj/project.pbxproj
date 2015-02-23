@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D3500E11A9AD71800623C7F /* SXContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3500E01A9AD71800623C7F /* SXContactViewController.m */; };
+		1D3500E41A9AD73200623C7F /* SXAddFriendVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3500E31A9AD73200623C7F /* SXAddFriendVController.m */; };
+		1D3500E61A9AD76D00623C7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D3500E51A9AD76D00623C7F /* Main.storyboard */; };
 		1D4C80841A98D2FF00039984 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4C80831A98D2FF00039984 /* main.m */; };
 		1D4C80871A98D2FF00039984 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4C80861A98D2FF00039984 /* AppDelegate.m */; };
 		1D4C808F1A98D2FF00039984 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D4C808E1A98D2FF00039984 /* Images.xcassets */; };
@@ -156,7 +159,6 @@
 		1D4C849E1A98DF9400039984 /* SXLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4C849D1A98DF9400039984 /* SXLoginViewController.m */; };
 		1D4C84A11A98DFBA00039984 /* SXRegisterUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4C84A01A98DFBA00039984 /* SXRegisterUserViewController.m */; };
 		1D4C84A31A98DFC900039984 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D4C84A21A98DFC900039984 /* Login.storyboard */; };
-		1DC4F0541A9992CC00BDA404 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DC4F0531A9992CC00BDA404 /* Main.storyboard */; };
 		1DC4F0571A9A295B00BDA404 /* SXMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC4F0561A9A295B00BDA404 /* SXMainViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -171,6 +173,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D3500DF1A9AD71800623C7F /* SXContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXContactViewController.h; sourceTree = "<group>"; };
+		1D3500E01A9AD71800623C7F /* SXContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXContactViewController.m; sourceTree = "<group>"; };
+		1D3500E21A9AD73200623C7F /* SXAddFriendVController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXAddFriendVController.h; sourceTree = "<group>"; };
+		1D3500E31A9AD73200623C7F /* SXAddFriendVController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXAddFriendVController.m; sourceTree = "<group>"; };
+		1D3500E51A9AD76D00623C7F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		1D4C807E1A98D2FF00039984 /* 98 - QQQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "98 - QQQ.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D4C80821A98D2FF00039984 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D4C80831A98D2FF00039984 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -476,7 +483,6 @@
 		1D4C849F1A98DFBA00039984 /* SXRegisterUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXRegisterUserViewController.h; sourceTree = "<group>"; };
 		1D4C84A01A98DFBA00039984 /* SXRegisterUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXRegisterUserViewController.m; sourceTree = "<group>"; };
 		1D4C84A21A98DFC900039984 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		1DC4F0531A9992CC00BDA404 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		1DC4F0551A9A295B00BDA404 /* SXMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXMainViewController.h; sourceTree = "<group>"; };
 		1DC4F0561A9A295B00BDA404 /* SXMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXMainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -504,6 +510,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D3500DE1A9AD70800623C7F /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				1D3500DF1A9AD71800623C7F /* SXContactViewController.h */,
+				1D3500E01A9AD71800623C7F /* SXContactViewController.m */,
+				1D3500E21A9AD73200623C7F /* SXAddFriendVController.h */,
+				1D3500E31A9AD73200623C7F /* SXAddFriendVController.m */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
 		1D4C80751A98D2FF00039984 = {
 			isa = PBXGroup;
 			children = (
@@ -1446,9 +1463,10 @@
 		1D4C84961A98DEEE00039984 /* IM */ = {
 			isa = PBXGroup;
 			children = (
-				1DC4F0531A9992CC00BDA404 /* Main.storyboard */,
+				1D3500DE1A9AD70800623C7F /* Friends */,
 				1DC4F0551A9A295B00BDA404 /* SXMainViewController.h */,
 				1DC4F0561A9A295B00BDA404 /* SXMainViewController.m */,
+				1D3500E51A9AD76D00623C7F /* Main.storyboard */,
 			);
 			path = IM;
 			sourceTree = "<group>";
@@ -1556,7 +1574,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D4C84A31A98DFC900039984 /* Login.storyboard in Resources */,
-				1DC4F0541A9992CC00BDA404 /* Main.storyboard in Resources */,
+				1D3500E61A9AD76D00623C7F /* Main.storyboard in Resources */,
 				1D4C848B1A98DB9700039984 /* build-libidn.sh in Resources */,
 				1D4C84861A98DB9700039984 /* README.txt in Resources */,
 				1D4C808F1A98D2FF00039984 /* Images.xcassets in Resources */,
@@ -1584,7 +1602,9 @@
 				1D4C84061A98DB9700039984 /* XMPPDeprecatedPlainAuthentication.m in Sources */,
 				1D4C847A1A98DB9700039984 /* XMPPSRVResolver.m in Sources */,
 				1D4C84651A98DB9700039984 /* XMPPStreamManagementMemoryStorage.m in Sources */,
+				1D3500E11A9AD71800623C7F /* SXContactViewController.m in Sources */,
 				1D4C847D1A98DB9700039984 /* GCDAsyncSocket.m in Sources */,
+				1D3500E41A9AD73200623C7F /* SXAddFriendVController.m in Sources */,
 				1D4C845C1A98DB9700039984 /* XMPPMessageArchiving_Message_CoreDataObject.m in Sources */,
 				1D4C844B1A98DB9700039984 /* TURNSocket.m in Sources */,
 				1D4C84681A98DB9700039984 /* XMPPAutoPing.m in Sources */,
