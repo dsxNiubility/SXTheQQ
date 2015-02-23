@@ -25,6 +25,10 @@ extern NSString *const SXLoginResultNotification;
 @property (nonatomic, assign) BOOL isRegisterUser;
 
 @property(nonatomic,strong,readonly) XMPPStream * xmppStream;
+
+@property(nonatomic,strong) XMPPRoster *xmppRoster;
+@property(nonatomic,strong) XMPPRosterCoreDataStorage * xmppRosterCoreDataStorage;
+
 + (instancetype)sharedXMPPTools;
 
 - (BOOL)connectionWithFailed:(void (^)(NSString *errorMessage))failed;

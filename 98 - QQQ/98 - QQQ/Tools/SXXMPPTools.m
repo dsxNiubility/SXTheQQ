@@ -47,10 +47,15 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
         
         // 实例化
         _xmppReconnect = [[XMPPReconnect alloc]init];
+        _xmppRosterCoreDataStorage = [XMPPRosterCoreDataStorage sharedInstance];
+        _xmppRoster = [[XMPPRoster alloc]initWithRosterStorage:_xmppRosterCoreDataStorage dispatchQueue:dispatch_get_global_queue(0, 0)];
+        
         // 激活
         [_xmppReconnect activate:_xmppStream];
+        [_xmppRoster activate:_xmppStream];
         
         [_xmppStream addDelegate:self delegateQueue:dispatch_get_global_queue(0, 0)];
+        [_xmppRoster addDelegate:self delegateQueue:dispatch_get_main_queue()];
     }
     return _xmppStream;
 }
@@ -60,12 +65,16 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
 {
     // 删除代理 禁用模块 清理缓存
     [self.xmppStream removeDelegate:self];
+    [self.xmppRoster removeDelegate:self];
     
     // 取消激活
     [self.xmppReconnect deactivate];
+    [self.xmppRoster deactivate];
     
     _xmppReconnect = nil;
     _xmppStream = nil;
+    _xmppRosterCoreDataStorage = nil;
+    _xmppRoster = nil;
     
 }
 #pragma mark - ******************** 单例方法
