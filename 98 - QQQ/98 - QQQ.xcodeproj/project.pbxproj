@@ -10,6 +10,7 @@
 		1D3500E11A9AD71800623C7F /* SXContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3500E01A9AD71800623C7F /* SXContactViewController.m */; };
 		1D3500E41A9AD73200623C7F /* SXAddFriendVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3500E31A9AD73200623C7F /* SXAddFriendVController.m */; };
 		1D3500E61A9AD76D00623C7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D3500E51A9AD76D00623C7F /* Main.storyboard */; };
+		1D3500EA1A9B22BA00623C7F /* SXChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3500E91A9B22BA00623C7F /* SXChatViewController.m */; };
 		1D4C80841A98D2FF00039984 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4C80831A98D2FF00039984 /* main.m */; };
 		1D4C80871A98D2FF00039984 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4C80861A98D2FF00039984 /* AppDelegate.m */; };
 		1D4C808F1A98D2FF00039984 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D4C808E1A98D2FF00039984 /* Images.xcassets */; };
@@ -178,6 +179,8 @@
 		1D3500E21A9AD73200623C7F /* SXAddFriendVController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXAddFriendVController.h; sourceTree = "<group>"; };
 		1D3500E31A9AD73200623C7F /* SXAddFriendVController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXAddFriendVController.m; sourceTree = "<group>"; };
 		1D3500E51A9AD76D00623C7F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		1D3500E81A9B22BA00623C7F /* SXChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXChatViewController.h; sourceTree = "<group>"; };
+		1D3500E91A9B22BA00623C7F /* SXChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXChatViewController.m; sourceTree = "<group>"; };
 		1D4C807E1A98D2FF00039984 /* 98 - QQQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "98 - QQQ.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D4C80821A98D2FF00039984 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D4C80831A98D2FF00039984 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -519,6 +522,15 @@
 				1D3500E31A9AD73200623C7F /* SXAddFriendVController.m */,
 			);
 			path = Friends;
+			sourceTree = "<group>";
+		};
+		1D3500E71A9B21C100623C7F /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				1D3500E81A9B22BA00623C7F /* SXChatViewController.h */,
+				1D3500E91A9B22BA00623C7F /* SXChatViewController.m */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		1D4C80751A98D2FF00039984 = {
@@ -1463,6 +1475,7 @@
 		1D4C84961A98DEEE00039984 /* IM */ = {
 			isa = PBXGroup;
 			children = (
+				1D3500E71A9B21C100623C7F /* Chat */,
 				1D3500DE1A9AD70800623C7F /* Friends */,
 				1DC4F0551A9A295B00BDA404 /* SXMainViewController.h */,
 				1DC4F0561A9A295B00BDA404 /* SXMainViewController.m */,
@@ -1656,6 +1669,7 @@
 				1D4C840E1A98DB9700039984 /* NSXMLElement+XMPP.m in Sources */,
 				1D4C84731A98DB9700039984 /* XMPPMessage+XEP_0308.m in Sources */,
 				1D4C843B1A98DB9700039984 /* XMPPvCardAvatarCoreDataStorageObject.m in Sources */,
+				1D3500EA1A9B22BA00623C7F /* SXChatViewController.m in Sources */,
 				1D4C844D1A98DB9700039984 /* XMPPMessage+XEP_0066.m in Sources */,
 				1DC4F0571A9A295B00BDA404 /* SXMainViewController.m in Sources */,
 				1D4C842A1A98DB9700039984 /* XMPPLastActivity.m in Sources */,

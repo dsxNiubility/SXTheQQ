@@ -50,12 +50,18 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
         _xmppRosterCoreDataStorage = [XMPPRosterCoreDataStorage sharedInstance];
         _xmppRoster = [[XMPPRoster alloc]initWithRosterStorage:_xmppRosterCoreDataStorage dispatchQueue:dispatch_get_global_queue(0, 0)];
         
+        // 消息模块(如果支持多个用户，使用单例，所有的聊天记录会保存在一个数据库中)
+        _xmppMessageArchivingCoreDataStorage = [XMPPMessageArchivingCoreDataStorage sharedInstance];
+        _xmppMessageArchiving = [[XMPPMessageArchiving alloc] initWithMessageArchivingStorage:_xmppMessageArchivingCoreDataStorage];
+        
+        
         // 取消接收自动订阅功能，需要确认才能够添加好友！
         _xmppRoster.autoAcceptKnownPresenceSubscriptionRequests = NO;
         
         // 激活
         [_xmppReconnect activate:_xmppStream];
         [_xmppRoster activate:_xmppStream];
+        [_xmppMessageArchiving activate:_xmppStream];
         
         [_xmppStream addDelegate:self delegateQueue:dispatch_get_global_queue(0, 0)];
         [_xmppRoster addDelegate:self delegateQueue:dispatch_get_main_queue()];

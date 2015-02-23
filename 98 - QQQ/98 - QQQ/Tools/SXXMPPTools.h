@@ -29,6 +29,12 @@ extern NSString *const SXLoginResultNotification;
 @property(nonatomic,strong) XMPPRoster *xmppRoster;
 @property(nonatomic,strong) XMPPRosterCoreDataStorage * xmppRosterCoreDataStorage;
 
+// 消息归档
+@property (nonatomic, strong, readonly) XMPPMessageArchiving *xmppMessageArchiving;
+// 消息归档存储
+@property (nonatomic, strong, readonly) XMPPMessageArchivingCoreDataStorage *xmppMessageArchivingCoreDataStorage;
+
+
 + (instancetype)sharedXMPPTools;
 
 - (BOOL)connectionWithFailed:(void (^)(NSString *errorMessage))failed;

@@ -9,6 +9,7 @@
 #import "SXContactViewController.h"
 #import "SXXMPPTools.h"
 #import "XMPPUserCoreDataStorageObject.h"
+#import "SXChatViewController.h"
 
 @interface SXContactViewController ()<NSFetchedResultsControllerDelegate>
 
@@ -114,6 +115,21 @@
         default:
             return @"未知";
             break;
+    }
+}
+
+#pragma mark - ******************** 即将跳转方法
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.destinationViewController isKindOfClass:[SXChatViewController class]]) {
+        SXChatViewController *chatVC = segue.destinationViewController;
+        
+        // 也可以直接用点语法
+        NSIndexPath *indexpath = [self.tableView indexPathForSelectedRow];
+        
+        XMPPUserCoreDataStorageObject *user = [self.fetchedResultsController objectAtIndexPath:indexpath];
+        
+        chatVC.chatJID = user.jid;
     }
 }
 

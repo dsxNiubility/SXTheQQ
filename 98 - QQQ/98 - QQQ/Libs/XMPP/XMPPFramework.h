@@ -31,11 +31,16 @@
 // 
 //#import "XMPPCoreDataStorage.h"
 //
+// 自动重新连接
 #import "XMPPReconnect.h"
-//
+// 好友管理
 #import "XMPPRoster.h"
-//#import "XMPPRosterMemoryStorage.h"
+// 好友数据存储
 #import "XMPPRosterCoreDataStorage.h"
+// 消息归档
+#import "XMPPMessageArchiving.h"
+// 消息数据存储
+#import "XMPPMessageArchivingCoreDataStorage.h"
 //
 //#import "XMPPJabberRPCModule.h"
 //#import "XMPPIQ+JabberRPC.h"
