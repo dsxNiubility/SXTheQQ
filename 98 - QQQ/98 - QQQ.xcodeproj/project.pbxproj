@@ -162,6 +162,7 @@
 		1D4C84A31A98DFC900039984 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D4C84A21A98DFC900039984 /* Login.storyboard */; };
 		1DC4F0571A9A295B00BDA404 /* SXMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC4F0561A9A295B00BDA404 /* SXMainViewController.m */; };
 		1DC9F1871A9C21B2007BFC30 /* SXChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC9F1861A9C21B2007BFC30 /* SXChatCell.m */; };
+		1DC9F18A1A9C8418007BFC30 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC9F1891A9C8418007BFC30 /* UIImage+Scale.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -491,6 +492,8 @@
 		1DC4F0561A9A295B00BDA404 /* SXMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXMainViewController.m; sourceTree = "<group>"; };
 		1DC9F1851A9C21B2007BFC30 /* SXChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXChatCell.h; sourceTree = "<group>"; };
 		1DC9F1861A9C21B2007BFC30 /* SXChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXChatCell.m; sourceTree = "<group>"; };
+		1DC9F1881A9C8418007BFC30 /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Scale.h"; sourceTree = "<group>"; };
+		1DC9F1891A9C8418007BFC30 /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1506,6 +1509,8 @@
 			children = (
 				1D4C84991A98DF0100039984 /* SXXMPPTools.h */,
 				1D4C849A1A98DF0100039984 /* SXXMPPTools.m */,
+				1DC9F1881A9C8418007BFC30 /* UIImage+Scale.h */,
+				1DC9F1891A9C8418007BFC30 /* UIImage+Scale.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -1679,6 +1684,7 @@
 				1DC4F0571A9A295B00BDA404 /* SXMainViewController.m in Sources */,
 				1D4C842A1A98DB9700039984 /* XMPPLastActivity.m in Sources */,
 				1D4C84211A98DB9700039984 /* XMPPResourceMemoryStorageObject.m in Sources */,
+				1DC9F18A1A9C8418007BFC30 /* UIImage+Scale.m in Sources */,
 				1DC9F1871A9C21B2007BFC30 /* SXChatCell.m in Sources */,
 				1D4C842F1A98DB9700039984 /* XMPPRoomOccupantCoreDataStorageObject.m in Sources */,
 				1D4C847C1A98DB9700039984 /* XMPPTimer.m in Sources */,

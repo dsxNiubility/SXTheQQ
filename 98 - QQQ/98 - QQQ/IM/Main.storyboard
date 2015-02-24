@@ -294,11 +294,11 @@
                                                     </state>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chat_send_nor" translatesAutoresizingMaskIntoConstraints="NO" id="1Mi-YG-dbM">
-                                                    <rect key="frame" x="441" y="8" width="103" height="56"/>
+                                                    <rect key="frame" x="466" y="8" width="78" height="58"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="220" translatesAutoresizingMaskIntoConstraints="NO" id="psx-J5-bmg">
-                                                    <rect key="frame" x="473" y="20" width="38" height="31"/>
+                                                    <rect key="frame" x="486" y="28" width="38" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -306,14 +306,14 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="1Mi-YG-dbM" firstAttribute="bottom" secondItem="psx-J5-bmg" secondAttribute="bottom" constant="13" id="4yx-8E-e8t"/>
+                                                <constraint firstItem="1Mi-YG-dbM" firstAttribute="bottom" secondItem="psx-J5-bmg" secondAttribute="bottom" constant="20" id="4yx-8E-e8t"/>
                                                 <constraint firstItem="1Mi-YG-dbM" firstAttribute="top" secondItem="Xys-pp-Oya" secondAttribute="top" constant="8" id="97v-aE-6Yn"/>
                                                 <constraint firstItem="vbQ-D2-Zqv" firstAttribute="top" secondItem="Xys-pp-Oya" secondAttribute="top" constant="8" id="AwO-lX-2og"/>
-                                                <constraint firstItem="1Mi-YG-dbM" firstAttribute="leading" secondItem="psx-J5-bmg" secondAttribute="leading" constant="-32" id="B46-KW-15K"/>
-                                                <constraint firstItem="1Mi-YG-dbM" firstAttribute="top" secondItem="psx-J5-bmg" secondAttribute="top" constant="-12" id="Gtm-CJ-hId"/>
+                                                <constraint firstItem="1Mi-YG-dbM" firstAttribute="leading" secondItem="psx-J5-bmg" secondAttribute="leading" constant="-20" id="B46-KW-15K"/>
+                                                <constraint firstItem="1Mi-YG-dbM" firstAttribute="top" secondItem="psx-J5-bmg" secondAttribute="top" constant="-20" id="Gtm-CJ-hId"/>
                                                 <constraint firstItem="vbQ-D2-Zqv" firstAttribute="leading" secondItem="1Mi-YG-dbM" secondAttribute="trailing" constant="8" id="HvV-zC-alw"/>
                                                 <constraint firstAttribute="trailing" secondItem="vbQ-D2-Zqv" secondAttribute="trailing" constant="8" id="Zuh-rj-ajd"/>
-                                                <constraint firstItem="1Mi-YG-dbM" firstAttribute="trailing" secondItem="psx-J5-bmg" secondAttribute="trailing" constant="33" id="jrY-M7-Fws"/>
+                                                <constraint firstItem="1Mi-YG-dbM" firstAttribute="trailing" secondItem="psx-J5-bmg" secondAttribute="trailing" constant="20" id="jrY-M7-Fws"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -331,7 +331,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nuj-co-9I5">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ez3-vG-bRj">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ez3-vG-bRj" userLabel="Button - 呻吟">
                                         <rect key="frame" x="8" y="5" width="34" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="PEM-xE-5v7"/>
@@ -342,7 +342,7 @@
                                         </state>
                                         <state key="highlighted" backgroundImage="chat_bottom_voice_press"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jVr-2D-RMT">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jVr-2D-RMT" userLabel="Button - 表情">
                                         <rect key="frame" x="516" y="5" width="34" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="34" id="Oeg-9c-9jn"/>
@@ -353,7 +353,7 @@
                                         </state>
                                         <state key="highlighted" backgroundImage="chat_bottom_smile_press"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89a-PI-ek8">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89a-PI-ek8" userLabel="Button - 添加">
                                         <rect key="frame" x="558" y="5" width="34" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="pNO-Sx-dtb"/>
@@ -363,6 +363,9 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="highlighted" backgroundImage="chat_bottom_up_press"/>
+                                        <connections>
+                                            <action selector="setPhoto" destination="MvK-9n-UBk" eventType="touchUpInside" id="hMt-pf-5zz"/>
+                                        </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jCO-Yu-NZi">
                                         <rect key="frame" x="50" y="7" width="458" height="30"/>

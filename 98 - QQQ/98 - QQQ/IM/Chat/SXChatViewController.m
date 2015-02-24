@@ -8,8 +8,9 @@
 
 #import "SXChatViewController.h"
 #import "SXChatCell.h"
+#import "UIImage+Scale.h"
 
-@interface SXChatViewController () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UITextViewDelegate>
+@interface SXChatViewController () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
@@ -101,7 +102,44 @@
     [[SXXMPPTools sharedXMPPTools].xmppStream sendElement:msg];
 }
 
+- (IBAction)setPhoto {
+    UIImagePickerController *picker = [[UIImagePickerController alloc]init];
+    
+    picker.delegate = self;
+    
+    [self presentViewController:picker animated:YES completion:nil];
+}
 
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    
+    NSData *data = UIImagePNGRepresentation(image);
+    
+    [self sendMessageWithData:data bodyName:@"image"];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+// 发送二进制文件
+- (void)sendMessageWithData:(NSData *)data bodyName:(NSString *)name
+{
+    XMPPMessage *message = [XMPPMessage messageWithType:@"chat" to:self.chatJID];
+    
+    [message addBody:name];
+    
+    // 转换成base64的编码
+    NSString *base64str = [data base64EncodedStringWithOptions:0];
+    
+    // 设置节点内容
+    XMPPElement *attachment = [XMPPElement elementWithName:@"attachment" stringValue:base64str];
+    
+    // 包含子节点
+    [message addChild:attachment];
+    
+    // 发送消息
+    [[SXXMPPTools sharedXMPPTools].xmppStream sendElement:message];
+}
 
 // 滚动到表格的末尾，显示最新的聊天内容
 - (void)scrollToBottom {
@@ -165,7 +203,35 @@
     
     SXChatCell *cell = [tableview dequeueReusableCellWithIdentifier:ID];
     
-    cell.messageLabel.text = message.body;
+    if ([message.body isEqualToString:@"image"]) {
+        
+        XMPPMessage *msg = message.message;
+        
+        for (XMPPElement *node in msg.children) {
+            
+            NSString *base64str = node.stringValue;
+            
+            NSData *data = [[NSData alloc]initWithBase64EncodedString:base64str options:0];
+            
+            UIImage *image = [[UIImage alloc]initWithData:data];
+            
+            NSTextAttachment *attach = [[NSTextAttachment alloc]init];
+            
+            attach.image = [image scaleImageWithWidth:200];
+            
+            NSAttributedString *attachStr = [NSAttributedString attributedStringWithAttachment:attach];
+            
+            cell.messageLabel.attributedText = attachStr;
+            
+            [self.view endEditing:YES];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:UIKeyboardWillChangeFrameNotification object:nil];
+        }
+        
+    }else if ([message.body isEqualToString:@"audio"]){
+    
+    }else{
+        cell.messageLabel.text = message.body;
+    }
     
     return cell;
 }
