@@ -161,6 +161,7 @@
 		1D4C84A11A98DFBA00039984 /* SXRegisterUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4C84A01A98DFBA00039984 /* SXRegisterUserViewController.m */; };
 		1D4C84A31A98DFC900039984 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D4C84A21A98DFC900039984 /* Login.storyboard */; };
 		1DC4F0571A9A295B00BDA404 /* SXMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC4F0561A9A295B00BDA404 /* SXMainViewController.m */; };
+		1DC9F1871A9C21B2007BFC30 /* SXChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC9F1861A9C21B2007BFC30 /* SXChatCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -488,6 +489,8 @@
 		1D4C84A21A98DFC900039984 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		1DC4F0551A9A295B00BDA404 /* SXMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXMainViewController.h; sourceTree = "<group>"; };
 		1DC4F0561A9A295B00BDA404 /* SXMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXMainViewController.m; sourceTree = "<group>"; };
+		1DC9F1851A9C21B2007BFC30 /* SXChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXChatCell.h; sourceTree = "<group>"; };
+		1DC9F1861A9C21B2007BFC30 /* SXChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXChatCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -529,6 +532,8 @@
 			children = (
 				1D3500E81A9B22BA00623C7F /* SXChatViewController.h */,
 				1D3500E91A9B22BA00623C7F /* SXChatViewController.m */,
+				1DC9F1851A9C21B2007BFC30 /* SXChatCell.h */,
+				1DC9F1861A9C21B2007BFC30 /* SXChatCell.m */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -1674,6 +1679,7 @@
 				1DC4F0571A9A295B00BDA404 /* SXMainViewController.m in Sources */,
 				1D4C842A1A98DB9700039984 /* XMPPLastActivity.m in Sources */,
 				1D4C84211A98DB9700039984 /* XMPPResourceMemoryStorageObject.m in Sources */,
+				1DC9F1871A9C21B2007BFC30 /* SXChatCell.m in Sources */,
 				1D4C842F1A98DB9700039984 /* XMPPRoomOccupantCoreDataStorageObject.m in Sources */,
 				1D4C847C1A98DB9700039984 /* XMPPTimer.m in Sources */,
 				1D4C843F1A98DB9700039984 /* XMPPvCardTemp.m in Sources */,

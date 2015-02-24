@@ -7,6 +7,7 @@
 //
 
 #import "SXChatViewController.h"
+#import "SXChatCell.h"
 
 @interface SXChatViewController () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UITextViewDelegate>
 
@@ -53,6 +54,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.fetchedResultsController performFetch:NULL];
+    
+    // 设置表格的背景图片
+    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login_bg.jpg"]];
     
     // 监听键盘变化
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardChanged:) name:UIKeyboardWillChangeFrameNotification object:nil];
@@ -126,12 +130,42 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *ID = @"ChatCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    return [self cellWithTableView:tableView andIndexPath:indexPath];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // 拿到Cell，设置数值
+    SXChatCell *cell = [self cellWithTableView:tableView andIndexPath:indexPath];
     
-    XMPPMessageArchiving_Message_CoreDataObject *msg = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    // 让cell自动布局
+    [cell layoutIfNeeded];
     
-    cell.textLabel.text = msg.body;
+    CGFloat height = [cell.messageLabel systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height +34;
+    
+    if (height < 80) {
+        return 80;
+    }
+    
+    return height;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 80;
+}
+
+- (SXChatCell *)cellWithTableView:(UITableView *)tableview andIndexPath:(NSIndexPath *)indexPath
+{
+    // 取出当前行的消息
+    XMPPMessageArchiving_Message_CoreDataObject *message = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    // 判断是发出消息还是接收消息
+    NSString *ID = ([message.outgoing intValue] == 1) ? @"SendCell" : @"ReciveCell" ;
+    
+    SXChatCell *cell = [tableview dequeueReusableCellWithIdentifier:ID];
+    
+    cell.messageLabel.text = message.body;
     
     return cell;
 }
