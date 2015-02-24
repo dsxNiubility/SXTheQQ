@@ -9,7 +9,9 @@
 #endif
 
 #if TARGET_OS_IPHONE
-#warning This file does not work on TARGET_OS_IPHONE.
+
+// 先哥
+//#warning This file does not work on TARGET_OS_IPHONE.
 #endif
 
 // Log levels: off, error, warn, info, verbose

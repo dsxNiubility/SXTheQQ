@@ -98,7 +98,7 @@
 }
 
 - (NSString *)userStatusWithSection:(NSInteger)section {
-    NSLog(@"%zd",section);
+//    NSLog(@"%zd",section);
     // section
     // 0 在线
     // 1 离开
@@ -153,6 +153,12 @@
         
         [self presentViewController:alert animated:YES completion:nil];
     }
+}
+- (IBAction)logOutBack:(UIBarButtonItem *)sender {
+    [[SXXMPPTools sharedXMPPTools] logout];
+    
+    // 切换界面
+    [[NSNotificationCenter defaultCenter] postNotificationName:SXLoginResultNotification object:@(NO)];
 }
 
 @end

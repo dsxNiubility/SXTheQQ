@@ -32,7 +32,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginStatusWithNotification:) name:SXLoginResultNotification object:nil];
     
     // 根据系统偏好中的内容 & 登录情况，决定显示那一个视图控制器
-#warning failed没有测试
+    
+    // 先哥
+//#warning failed没有测试
     
     // 那个errormessage在哪填写了
     // 为什么非要在主线程发送通知

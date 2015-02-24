@@ -29,7 +29,7 @@
 
 @implementation SXChatViewController
 
-#pragma mark - 录音部分
+#pragma mark - ******************** 懒加载
 - (UITextField *)recordText {
     if (_recordText == nil) {
         _recordText = [[UITextField alloc] init];
@@ -43,25 +43,6 @@
         [self.inputMessageView addSubview:_recordText];
     }
     return _recordText;
-}
-
-- (void)startRecord {
-    NSLog(@"开始录音");
-    [[SXRecordTools sharedRecorder] startRecord];
-}
-
-- (void)stopRecord {
-    NSLog(@"停止录音");
-    [[SXRecordTools sharedRecorder] stopRecordSuccess:^(NSURL *url, NSTimeInterval time) {
-        
-        // 发送声音数据
-        NSData *data = [NSData dataWithContentsOfURL:url];
-        [self sendMessageWithData:data bodyName:[NSString stringWithFormat:@"audio:%.1f秒", time]];
-
-    } andFailed:^{
-        
-         [[[UIAlertView alloc] initWithTitle:@"提示" message:@"时间太短" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil] show];
-    }];
 }
 
 - (NSFetchedResultsController *)fetchedResultsController {
@@ -84,12 +65,34 @@
     return _fetchedResultsController;
 }
 
+#pragma mark - ******************** 结果调度器的代理方法
 // 内容变化(接收到其他好友的/我发送的消息)的时候，会触发
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     [self.tableView reloadData];
     
     [self scrollToBottom];
 }
+
+#pragma mark - ******************** 录音方法
+- (void)startRecord {
+    NSLog(@"开始录音");
+    [[SXRecordTools sharedRecorder] startRecord];
+}
+
+- (void)stopRecord {
+    NSLog(@"停止录音");
+    [[SXRecordTools sharedRecorder] stopRecordSuccess:^(NSURL *url, NSTimeInterval time) {
+        
+        // 发送声音数据
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        [self sendMessageWithData:data bodyName:[NSString stringWithFormat:@"audio:%.1f秒", time]];
+        
+    } andFailed:^{
+        
+        [[[UIAlertView alloc] initWithTitle:@"提示" message:@"时间太短" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil] show];
+    }];
+}
+
 
 
 #pragma mark - ******************** 首次加载
@@ -104,23 +107,37 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardChanged:) name:UIKeyboardWillChangeFrameNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidChanged) name:UIKeyboardDidChangeFrameNotification object:nil];
     
+    
     [self scrollToBottom];
 
 }
 
-#pragma mark - ******************** 键盘弹出后
+#pragma mark - ******************** 监听键盘弹出的方法
 - (void)keyboardChanged:(NSNotification *)notification {
     // 先打印
     // UIKeyboardFrameEndUserInfoKey ＝》将要变化的大小
     CGRect keyboardRect = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     // 设置约束
-    self.inputViewBottomConstraint.constant = keyboardRect.size.height;
+    self.inputViewBottomConstraint.constant = ([UIScreen mainScreen].bounds.size.height - keyboardRect.origin.y);
+    
+    NSTimeInterval time = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    
+   [UIView animateWithDuration:time animations:^{
+       [self.view layoutIfNeeded];
+   }];
+    
+//    NSLog(@"%f",keyboardRect.size.height);
+//    NSLog(@"%@",notification);
+    
 }
 
 - (void)keyboardDidChanged {
     [self scrollToBottom];
 }
 
+
+#pragma mark - ******************** textView代理方法
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     if ([text isEqualToString:@"\n"]) {
@@ -134,27 +151,8 @@
     return YES;
 }
 
-- (void)sendMessage:(NSString *)message
-{
-    XMPPMessage *msg = [XMPPMessage messageWithType:@"chat" to:self.chatJID];
-    
-    [msg addBody:message];
-    
-    [[SXXMPPTools sharedXMPPTools].xmppStream sendElement:msg];
-}
-- (IBAction)setRecord {
-    // 切换焦点，弹出录音按钮
-    [self.recordText becomeFirstResponder];
-}
 
-- (IBAction)setPhoto {
-    UIImagePickerController *picker = [[UIImagePickerController alloc]init];
-    
-    picker.delegate = self;
-    
-    [self presentViewController:picker animated:YES completion:nil];
-}
-
+#pragma mark - ******************** imgPickerController代理方法
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *image = info[UIImagePickerControllerOriginalImage];
@@ -166,7 +164,18 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-// 发送二进制文件
+#pragma mark - ******************** 发送消息方法
+/** 发送信息 */
+- (void)sendMessage:(NSString *)message
+{
+    XMPPMessage *msg = [XMPPMessage messageWithType:@"chat" to:self.chatJID];
+    
+    [msg addBody:message];
+    
+    [[SXXMPPTools sharedXMPPTools].xmppStream sendElement:msg];
+}
+
+/** 发送二进制文件 */
 - (void)sendMessageWithData:(NSData *)data bodyName:(NSString *)name
 {
     XMPPMessage *message = [XMPPMessage messageWithType:@"chat" to:self.chatJID];
@@ -186,27 +195,10 @@
     [[SXXMPPTools sharedXMPPTools].xmppStream sendElement:message];
 }
 
-// 滚动到表格的末尾，显示最新的聊天内容
-- (void)scrollToBottom {
-    
-    // 1. indexPath，应该是最末一行的indexPath
-    NSInteger count = self.fetchedResultsController.fetchedObjects.count;
-    
-    // 数组里面没东西还滚，不是找崩么
-    if (count > 3) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(count - 1) inSection:0];
-        
-        // 2. 将要滚动到的位置
-        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-    }
-    
-}
 
-#pragma mark - ******************** tbv数据源方法
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
+
+#pragma mark - ******************** 和tableView相关的一系列方法
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.fetchedResultsController.fetchedObjects.count;
@@ -216,6 +208,7 @@
     return [self cellWithTableView:tableView andIndexPath:indexPath];
 }
 
+/** 计算行高方法 */
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // 拿到Cell，设置数值
@@ -233,11 +226,13 @@
     return height;
 }
 
+/** 预估行高 */
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 80;
 }
 
+/** 直接返回一个cell */
 - (SXChatCell *)cellWithTableView:(UITableView *)tableview andIndexPath:(NSIndexPath *)indexPath
 {
     // 取出当前行的消息
@@ -280,7 +275,7 @@
         XMPPMessage *msg = message.message;
         
         for (XMPPElement *node in msg.children) {
-            
+        
             NSString *base64str = node.stringValue;
             
             NSData *data = [[NSData alloc]initWithBase64EncodedString:base64str options:0];
@@ -297,6 +292,44 @@
     }
     
     return cell;
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [self.view endEditing:YES];
+}
+
+
+#pragma mark - ******************** 界面底部按钮点击方法
+- (IBAction)setRecord {
+    // 切换焦点，弹出录音按钮
+    [self.recordText becomeFirstResponder];
+}
+
+- (IBAction)setPhoto {
+    UIImagePickerController *picker = [[UIImagePickerController alloc]init];
+    
+    picker.delegate = self;
+    
+    [self presentViewController:picker animated:YES completion:nil];
+}
+
+
+#pragma mark - ******************** 为了方便抽出来的方法
+// 滚动到表格的末尾，显示最新的聊天内容
+- (void)scrollToBottom {
+    
+    // 1. indexPath，应该是最末一行的indexPath
+    NSInteger count = self.fetchedResultsController.fetchedObjects.count;
+    
+    // 数组里面没东西还滚，不是找崩么
+    if (count > 3) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(count - 1) inSection:0];
+        
+        // 2. 将要滚动到的位置
+        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
+    
 }
 
 @end

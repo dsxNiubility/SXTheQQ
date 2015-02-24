@@ -1882,9 +1882,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/**",
-					"$(PROJECT_DIR)/98",
-					"-",
-					QQQ/Libs/XMPP/Vendor/libidn,
+					"$(PROJECT_DIR)/**",
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1906,9 +1904,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/**",
-					"$(PROJECT_DIR)/98",
-					"-",
-					QQQ/Libs/XMPP/Vendor/libidn,
+					"$(PROJECT_DIR)/**",
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";

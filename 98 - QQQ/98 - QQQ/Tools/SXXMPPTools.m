@@ -34,10 +34,7 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
 
 @synthesize xmppStream = _xmppStream;
 
-- (void)dealloc
-{
-    [self teardownXmppStream];
-}
+
 
 #pragma mark - ******************** 懒加载
 - (XMPPStream *)xmppStream
@@ -69,23 +66,7 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
     return _xmppStream;
 }
 
-/** 销毁调用 */
-- (void)teardownXmppStream
-{
-    // 删除代理 禁用模块 清理缓存
-    [self.xmppStream removeDelegate:self];
-    [self.xmppRoster removeDelegate:self];
-    
-    // 取消激活
-    [self.xmppReconnect deactivate];
-    [self.xmppRoster deactivate];
-    
-    _xmppReconnect = nil;
-    _xmppStream = nil;
-    _xmppRosterCoreDataStorage = nil;
-    _xmppRoster = nil;
-    
-}
+
 #pragma mark - ******************** 单例方法
 + (instancetype)sharedXMPPTools {
     static SXXMPPTools *instance;
@@ -249,6 +230,8 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
     }
 }
 
+#pragma mark - ******************** 清除的方法
+
 /** 清除用户的偏好 */
 - (void)clearUserDefaults
 {
@@ -262,7 +245,31 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
     [defaults synchronize];
 }
 
-#pragma mark - XMPP花名册代理
+/** 销毁调用 */
+- (void)teardownXmppStream
+{
+    // 删除代理 禁用模块 清理缓存
+    [self.xmppStream removeDelegate:self];
+    [self.xmppRoster removeDelegate:self];
+    
+    // 取消激活
+    [self.xmppReconnect deactivate];
+    [self.xmppRoster deactivate];
+    
+    _xmppReconnect = nil;
+    _xmppStream = nil;
+    _xmppRosterCoreDataStorage = nil;
+    _xmppRoster = nil;
+    
+}
+
+- (void)dealloc
+{
+    [self teardownXmppStream];
+}
+
+
+#pragma mark - ******************** XMPP花名册代理
 // 接收到订阅请求
 - (void)xmppRoster:(XMPPRoster *)sender didReceivePresenceSubscriptionRequest:(XMPPPresence *)presence {
     // 通过代理同样可以知道好友的请求
