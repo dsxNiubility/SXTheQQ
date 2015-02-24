@@ -9,6 +9,7 @@
 #import "SXChatViewController.h"
 #import "SXChatCell.h"
 #import "UIImage+Scale.h"
+#import "SXRecordTools.h"
 
 @interface SXChatViewController () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
@@ -19,9 +20,49 @@
 /** 输入视图底部约束 */
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputViewBottomConstraint;
 
+/** 录音文本 */
+@property (nonatomic, strong) UITextField *recordText;
+/** 输入视图 */
+@property (weak, nonatomic) IBOutlet UIView *inputMessageView;
+
 @end
 
 @implementation SXChatViewController
+
+#pragma mark - 录音部分
+- (UITextField *)recordText {
+    if (_recordText == nil) {
+        _recordText = [[UITextField alloc] init];
+        
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeContactAdd];
+        _recordText.inputView = btn;
+        
+        [btn addTarget:self action:@selector(startRecord) forControlEvents:UIControlEventTouchDown];
+        [btn addTarget:self action:@selector(stopRecord) forControlEvents:UIControlEventTouchUpInside];
+        
+        [self.inputMessageView addSubview:_recordText];
+    }
+    return _recordText;
+}
+
+- (void)startRecord {
+    NSLog(@"开始录音");
+    [[SXRecordTools sharedRecorder] startRecord];
+}
+
+- (void)stopRecord {
+    NSLog(@"停止录音");
+    [[SXRecordTools sharedRecorder] stopRecordSuccess:^(NSURL *url, NSTimeInterval time) {
+        
+        // 发送声音数据
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        [self sendMessageWithData:data bodyName:[NSString stringWithFormat:@"audio:%.1f秒", time]];
+
+    } andFailed:^{
+        
+         [[[UIAlertView alloc] initWithTitle:@"提示" message:@"时间太短" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil] show];
+    }];
+}
 
 - (NSFetchedResultsController *)fetchedResultsController {
     if (_fetchedResultsController != nil) {
@@ -100,6 +141,10 @@
     [msg addBody:message];
     
     [[SXXMPPTools sharedXMPPTools].xmppStream sendElement:msg];
+}
+- (IBAction)setRecord {
+    // 切换焦点，弹出录音按钮
+    [self.recordText becomeFirstResponder];
 }
 
 - (IBAction)setPhoto {
@@ -198,10 +243,13 @@
     // 取出当前行的消息
     XMPPMessageArchiving_Message_CoreDataObject *message = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
+    
     // 判断是发出消息还是接收消息
     NSString *ID = ([message.outgoing intValue] == 1) ? @"SendCell" : @"ReciveCell" ;
     
     SXChatCell *cell = [tableview dequeueReusableCellWithIdentifier:ID];
+    
+    cell.audioData = nil;
     
     if ([message.body isEqualToString:@"image"]) {
         
@@ -227,7 +275,22 @@
 //            [[NSNotificationCenter defaultCenter] postNotificationName:UIKeyboardWillChangeFrameNotification object:nil];
         }
         
-    }else if ([message.body isEqualToString:@"audio"]){
+    }else if ([message.body hasPrefix:@"audio"]){
+        
+        XMPPMessage *msg = message.message;
+        
+        for (XMPPElement *node in msg.children) {
+            
+            NSString *base64str = node.stringValue;
+            
+            NSData *data = [[NSData alloc]initWithBase64EncodedString:base64str options:0];
+            
+            NSString *newstr = [message.body substringFromIndex:6];
+            cell.messageLabel.text = newstr;
+            
+            cell.audioData = data;
+        }
+        
     
     }else{
         cell.messageLabel.text = message.body;

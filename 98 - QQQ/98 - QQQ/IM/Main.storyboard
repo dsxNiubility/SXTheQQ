@@ -341,6 +341,9 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="highlighted" backgroundImage="chat_bottom_voice_press"/>
+                                        <connections>
+                                            <action selector="setRecord" destination="MvK-9n-UBk" eventType="touchUpInside" id="3Yi-48-HMl"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jVr-2D-RMT" userLabel="Button - 表情">
                                         <rect key="frame" x="516" y="5" width="34" height="34"/>
@@ -408,6 +411,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="A3u-pD-alh"/>
                     <connections>
+                        <outlet property="inputMessageView" destination="nuj-co-9I5" id="T5Z-qo-nrq"/>
                         <outlet property="inputViewBottomConstraint" destination="d05-Ks-ODr" id="lm7-97-HiQ"/>
                         <outlet property="tableView" destination="ibV-C1-PSr" id="8Vm-Dj-fl8"/>
                         <outlet property="textView" destination="jCO-Yu-NZi" id="kHo-e7-1yU"/>
