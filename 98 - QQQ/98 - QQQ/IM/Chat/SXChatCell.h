@@ -13,7 +13,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *iconButton;
 @property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 
-/** 音频的二进制数据 */
-@property (nonatomic, strong) NSData *audioData;
+
+//@property (nonatomic, strong) NSData *audioData;
+
+/** 音频的地址 */
+@property (nonatomic, strong) NSString *audioPath;
 
 @end

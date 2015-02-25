@@ -95,6 +95,25 @@
 
 - (void)playData:(NSData *)data completion:(void(^)())completion
 {
+    [self playWithPlayer:^AVAudioPlayer *{
+        
+        return [[AVAudioPlayer alloc]initWithData:data error:NULL];
+        
+    } completion:completion];
+}
+
+- (void)playPath:(NSString *)path completion:(void (^)())completion
+{
+    [self playWithPlayer:^AVAudioPlayer *{
+        
+        return [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:path] error:NULL];
+    } completion:completion];
+}
+
+
+/** 代码重构 */
+- (void)playWithPlayer:(AVAudioPlayer *(^)())player completion:(void (^)())completion
+{
     // 判断是否正在播放
     if (self.player.isPlaying) {
         [self.player stop];
@@ -104,7 +123,7 @@
     self.palyCompletion = completion;
     
     // 监听播放器播放状态
-    self.player = [[AVAudioPlayer alloc]initWithData:data error:NULL];
+    self.player = player();
     
     self.player.delegate = self;
     

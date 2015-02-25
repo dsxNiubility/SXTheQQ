@@ -164,6 +164,8 @@
 		1DC9F1871A9C21B2007BFC30 /* SXChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC9F1861A9C21B2007BFC30 /* SXChatCell.m */; };
 		1DC9F18A1A9C8418007BFC30 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC9F1891A9C8418007BFC30 /* UIImage+Scale.m */; };
 		1DC9F18D1A9C8F02007BFC30 /* SXRecordTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC9F18C1A9C8F02007BFC30 /* SXRecordTools.m */; };
+		1DDC5A1B1A9D96A600045BD2 /* NSFileManager+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDC5A1A1A9D96A600045BD2 /* NSFileManager+Tools.m */; };
+		1DDC5A1E1A9D96C800045BD2 /* XMPPMessage+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDC5A1D1A9D96C800045BD2 /* XMPPMessage+Tools.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -497,6 +499,10 @@
 		1DC9F1891A9C8418007BFC30 /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
 		1DC9F18B1A9C8F02007BFC30 /* SXRecordTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXRecordTools.h; sourceTree = "<group>"; };
 		1DC9F18C1A9C8F02007BFC30 /* SXRecordTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXRecordTools.m; sourceTree = "<group>"; };
+		1DDC5A191A9D96A600045BD2 /* NSFileManager+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+Tools.h"; sourceTree = "<group>"; };
+		1DDC5A1A1A9D96A600045BD2 /* NSFileManager+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+Tools.m"; sourceTree = "<group>"; };
+		1DDC5A1C1A9D96C800045BD2 /* XMPPMessage+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XMPPMessage+Tools.h"; sourceTree = "<group>"; };
+		1DDC5A1D1A9D96C800045BD2 /* XMPPMessage+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XMPPMessage+Tools.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -536,6 +542,8 @@
 		1D3500E71A9B21C100623C7F /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				1DDC5A1C1A9D96C800045BD2 /* XMPPMessage+Tools.h */,
+				1DDC5A1D1A9D96C800045BD2 /* XMPPMessage+Tools.m */,
 				1D3500E81A9B22BA00623C7F /* SXChatViewController.h */,
 				1D3500E91A9B22BA00623C7F /* SXChatViewController.m */,
 				1DC9F1851A9C21B2007BFC30 /* SXChatCell.h */,
@@ -1510,6 +1518,8 @@
 		1D4C84981A98DEEE00039984 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				1DDC5A191A9D96A600045BD2 /* NSFileManager+Tools.h */,
+				1DDC5A1A1A9D96A600045BD2 /* NSFileManager+Tools.m */,
 				1D4C84991A98DF0100039984 /* SXXMPPTools.h */,
 				1D4C849A1A98DF0100039984 /* SXXMPPTools.m */,
 				1DC9F1881A9C8418007BFC30 /* UIImage+Scale.h */,
@@ -1667,6 +1677,7 @@
 				1D4C840B1A98DB9700039984 /* XMPPXOAuth2Google.m in Sources */,
 				1D4C84051A98DB9700039984 /* XMPPDeprecatedDigestAuthentication.m in Sources */,
 				1D4C844C1A98DB9700039984 /* XMPPIQ+XEP_0066.m in Sources */,
+				1DDC5A1E1A9D96C800045BD2 /* XMPPMessage+Tools.m in Sources */,
 				1D4C84501A98DB9700039984 /* XMPPDateTimeProfiles.m in Sources */,
 				1D4C84151A98DB9700039984 /* XMPPPresence.m in Sources */,
 				1D4C84201A98DB9700039984 /* XMPPUserCoreDataStorageObject.m in Sources */,
@@ -1722,6 +1733,7 @@
 				1D4C84111A98DB9700039984 /* XMPPJID.m in Sources */,
 				1D4C841A1A98DB9700039984 /* XMPPProcessOne.m in Sources */,
 				1D4C842D1A98DB9700039984 /* XMPPRoomCoreDataStorage.m in Sources */,
+				1DDC5A1B1A9D96A600045BD2 /* NSFileManager+Tools.m in Sources */,
 				1D4C84281A98DB9700039984 /* XMPPJabberRPCModule.m in Sources */,
 				1D4C84241A98DB9700039984 /* XMPPRoster.m in Sources */,
 				1D4C840F1A98DB9700039984 /* XMPPElement.m in Sources */,

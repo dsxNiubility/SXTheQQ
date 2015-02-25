@@ -10,6 +10,7 @@
 #import "SXChatCell.h"
 #import "UIImage+Scale.h"
 #import "SXRecordTools.h"
+#import "XMPPMessage+Tools.h"
 
 @interface SXChatViewController () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
@@ -235,6 +236,9 @@
 /** 直接返回一个cell */
 - (SXChatCell *)cellWithTableView:(UITableView *)tableview andIndexPath:(NSIndexPath *)indexPath
 {
+    
+    NSLog(@"调用了几次？");
+    
     // 取出当前行的消息
     XMPPMessageArchiving_Message_CoreDataObject *message = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
@@ -244,19 +248,23 @@
     
     SXChatCell *cell = [tableview dequeueReusableCellWithIdentifier:ID];
     
-    cell.audioData = nil;
+    // 如果存进去了，就把字符串转化成简洁的节点后保存
+    if ([message.message saveAttachmentJID:self.chatJID.bare timestamp:message.timestamp]) {
+        message.messageStr = [message.message compactXMLString];
+        
+        [[SXXMPPTools sharedXMPPTools].xmppMessageArchivingCoreDataStorage.mainThreadManagedObjectContext save:NULL];
+    }
+    
+//    cell.audioData = nil;
+    cell.audioPath = nil;
+    
+    
+    NSString *path = [message.message pathForAttachment:self.chatJID.bare timestamp:message.timestamp];
     
     if ([message.body isEqualToString:@"image"]) {
         
-        XMPPMessage *msg = message.message;
         
-        for (XMPPElement *node in msg.children) {
-            
-            NSString *base64str = node.stringValue;
-            
-            NSData *data = [[NSData alloc]initWithBase64EncodedString:base64str options:0];
-            
-            UIImage *image = [[UIImage alloc]initWithData:data];
+        UIImage *image = [UIImage imageWithContentsOfFile:path];
             
             NSTextAttachment *attach = [[NSTextAttachment alloc]init];
             
@@ -267,25 +275,13 @@
             cell.messageLabel.attributedText = attachStr;
             
             [self.view endEditing:YES];
-//            [[NSNotificationCenter defaultCenter] postNotificationName:UIKeyboardWillChangeFrameNotification object:nil];
-        }
         
-    }else if ([message.body hasPrefix:@"audio"]){
+        }else if ([message.body hasPrefix:@"audio"]){
         
-        XMPPMessage *msg = message.message;
-        
-        for (XMPPElement *node in msg.children) {
-        
-            NSString *base64str = node.stringValue;
-            
-            NSData *data = [[NSData alloc]initWithBase64EncodedString:base64str options:0];
-            
             NSString *newstr = [message.body substringFromIndex:6];
             cell.messageLabel.text = newstr;
             
-            cell.audioData = data;
-        }
-        
+            cell.audioPath = path;
     
     }else{
         cell.messageLabel.text = message.body;

@@ -18,7 +18,10 @@
 /** 停止录音 */
 - (void)stopRecordSuccess:(void (^)(NSURL *url,NSTimeInterval time))success andFailed:(void (^)())failed;
 
-/** 播放声音 */
+/** 播放声音数据 */
 - (void)playData:(NSData *)data completion:(void(^)())completion;
+
+/** 播放声音文件 */
+- (void)playPath:(NSString *)path completion:(void(^)())completion;
 
 @end
