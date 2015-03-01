@@ -47,19 +47,25 @@
 }
 
 - (NSFetchedResultsController *)fetchedResultsController {
+    // 推荐写法，减少嵌套的层次
     if (_fetchedResultsController != nil) {
         return _fetchedResultsController;
     }
     
+    // 先确定需要用到哪个实体
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"XMPPMessageArchiving_Message_CoreDataObject"];
+    
+    // 排序
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:YES];
     request.sortDescriptors = @[sort];
     
     // 每一个聊天界面，只关心聊天对象的消息
     request.predicate = [NSPredicate predicateWithFormat:@"bareJidStr = %@", self.chatJID.bare];
     
+    // 从自己写的工具类里的属性中得到上下文
     NSManagedObjectContext *ctx = [SXXMPPTools sharedXMPPTools].xmppMessageArchivingCoreDataStorage.mainThreadManagedObjectContext;
     
+    // 实例化，里面要填上上面的各种参数
     _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:ctx sectionNameKeyPath:nil cacheName:nil];
     _fetchedResultsController.delegate = self;
     
@@ -141,8 +147,10 @@
 #pragma mark - ******************** textView代理方法
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
+    // 判断按下的是不是回车键。
     if ([text isEqualToString:@"\n"]) {
         
+        // 自定义的信息发送方法，传入字符串直接发出去。
         [self sendMessage:textView.text];
         
         self.textView.text = nil;
@@ -236,7 +244,6 @@
 /** 直接返回一个cell */
 - (SXChatCell *)cellWithTableView:(UITableView *)tableview andIndexPath:(NSIndexPath *)indexPath
 {
-    
     NSLog(@"调用了几次？");
     
     // 取出当前行的消息
@@ -257,7 +264,6 @@
     
 //    cell.audioData = nil;
     cell.audioPath = nil;
-    
     
     NSString *path = [message.message pathForAttachment:self.chatJID.bare timestamp:message.timestamp];
     

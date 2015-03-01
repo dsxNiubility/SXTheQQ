@@ -34,7 +34,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="plW-T5-zYm">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" id="plW-T5-zYm">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="plW-T5-zYm" id="3za-hZ-PMT">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -50,7 +50,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eg4-Nc-aPb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1850" y="-1162"/>
+            <point key="canvasLocation" x="1824" y="-1070"/>
         </scene>
         <!--联系人-->
         <scene sceneID="M3p-aN-BcD">
@@ -90,22 +90,22 @@
                             <outlet property="delegate" destination="8tr-O6-z4g" id="Pyc-Ge-CYR"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="联系人" id="bXr-IF-FDa">
-                        <barButtonItem key="leftBarButtonItem" title="注销" id="W7u-ZO-A9b">
+                    <navigationItem key="navigationItem" title="联系人" id="Z2E-6c-dRM">
+                        <barButtonItem key="leftBarButtonItem" title="注销" id="5r0-U4-Ntx">
                             <connections>
-                                <action selector="logOutBack:" destination="8tr-O6-z4g" id="P10-Zu-Vhg"/>
+                                <action selector="logOutBack:" destination="8tr-O6-z4g" id="hER-P2-Vz1"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="G4j-mm-Iue">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="UnB-rW-PC6">
                             <connections>
-                                <segue destination="Rfb-sW-qJ0" kind="show" id="2Lg-XY-Qkr"/>
+                                <segue destination="Rfb-sW-qJ0" kind="show" id="Bmr-S0-KrN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EPj-n2-xLE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1903" y="-437"/>
+            <point key="canvasLocation" x="1807" y="-297"/>
         </scene>
         <!--Add FriendV Controller-->
         <scene sceneID="okH-kM-o0c">
@@ -141,7 +141,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="84i-2D-Kym" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2654" y="-30"/>
+            <point key="canvasLocation" x="2823" y="66"/>
         </scene>
         <!--动态-->
         <scene sceneID="KnJ-Rf-8bL">
@@ -168,7 +168,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gBD-b1-gWy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1959" y="835"/>
+            <point key="canvasLocation" x="1847" y="587"/>
         </scene>
         <!--动态-->
         <scene sceneID="H0j-6c-qCa">
@@ -446,7 +446,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nrm-sJ-xK5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2535" y="-1006"/>
+            <point key="canvasLocation" x="2963" y="-854"/>
         </scene>
     </scenes>
     <resources>

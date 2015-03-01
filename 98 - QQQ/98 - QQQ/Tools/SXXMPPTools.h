@@ -24,14 +24,15 @@ extern NSString *const SXLoginResultNotification;
 // 是否是注册用户的标记
 @property (nonatomic, assign) BOOL isRegisterUser;
 
+/** xmpp流 */
 @property(nonatomic,strong,readonly) XMPPStream * xmppStream;
 
 @property(nonatomic,strong) XMPPRoster *xmppRoster;
 @property(nonatomic,strong) XMPPRosterCoreDataStorage * xmppRosterCoreDataStorage;
 
-// 消息归档
+/** 消息归档 */
 @property (nonatomic, strong, readonly) XMPPMessageArchiving *xmppMessageArchiving;
-// 消息归档存储
+/** 消息归档存储 */
 @property (nonatomic, strong, readonly) XMPPMessageArchivingCoreDataStorage *xmppMessageArchivingCoreDataStorage;
 
 
