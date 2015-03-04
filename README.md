@@ -1,2 +1,2 @@
 # SXTheQQ
-用xmpp协议创建QQ程序
+用xmppFramework框架编写QQ程序
