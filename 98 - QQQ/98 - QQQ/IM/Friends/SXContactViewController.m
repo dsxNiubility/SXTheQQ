@@ -25,7 +25,6 @@
     if (_fetchedResultsController != nil) {
         return  _fetchedResultsController;
     }
-    
     // 指定查询的实体
     NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"XMPPUserCoreDataStorageObject"];
     

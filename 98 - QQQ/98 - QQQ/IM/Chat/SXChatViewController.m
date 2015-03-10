@@ -26,6 +26,15 @@
 /** 输入视图 */
 @property (weak, nonatomic) IBOutlet UIView *inputMessageView;
 
+@property(nonatomic,strong) UITableViewCell *nowCell;
+
+@property(nonatomic,strong) NSIndexPath *nowIndexPath;
+
+@property (nonatomic,assign) CGFloat nowHeight;
+
+@property(nonatomic,strong) NSCache *cache;
+
+
 @end
 
 @implementation SXChatViewController
@@ -44,6 +53,13 @@
         [self.inputMessageView addSubview:_recordText];
     }
     return _recordText;
+}
+
+- (NSCache *)cache{
+    if (_cache == nil) {
+        _cache = [[NSCache alloc]init];
+    }
+    return _cache;
 }
 
 - (NSFetchedResultsController *)fetchedResultsController {
@@ -214,12 +230,23 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
+//    UITableViewCell *cell = [self cellWithTableView:tableView andIndexPath:indexPath];
     return [self cellWithTableView:tableView andIndexPath:indexPath];
 }
 
 /** 计算行高方法 */
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSString *row = [NSString stringWithFormat:@"%ld",indexPath.row];
+    
+    if ([self.cache objectForKey:row]!=nil) {
+//        NSLog(@"%f",[[self.cache objectForKey:row] floatValue]);
+        return [[self.cache objectForKey:row] floatValue];
+    }
+
+    
+//    NSLog(@"计算行高 %ld",indexPath.row);
     // 拿到Cell，设置数值
     SXChatCell *cell = [self cellWithTableView:tableView andIndexPath:indexPath];
     
@@ -229,9 +256,11 @@
     CGFloat height = [cell.messageLabel systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height +34;
     
     if (height < 80) {
+        [self.cache setObject:@(80) forKey:row];
         return 80;
     }
-    
+
+    [self.cache setObject:@(height) forKey:row];
     return height;
 }
 
@@ -244,7 +273,8 @@
 /** 直接返回一个cell */
 - (SXChatCell *)cellWithTableView:(UITableView *)tableview andIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"调用了几次？");
+    
+//    NSLog(@"调用了几次？");
     
     // 取出当前行的消息
     XMPPMessageArchiving_Message_CoreDataObject *message = [self.fetchedResultsController objectAtIndexPath:indexPath];

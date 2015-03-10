@@ -60,6 +60,7 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
         [_xmppRoster activate:_xmppStream];
         [_xmppMessageArchiving activate:_xmppStream];
         
+        // 添加代理
         [_xmppStream addDelegate:self delegateQueue:dispatch_get_global_queue(0, 0)];
         [_xmppRoster addDelegate:self delegateQueue:dispatch_get_main_queue()];
     }
@@ -147,7 +148,6 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
     if (self.isRegisterUser) {
         // 将用户密码发送给服务器，进行用户注册
         [self.xmppStream registerWithPassword:password error:NULL];
-        
         // 将注册标记复位
         self.isRegisterUser = NO;
     } else {
@@ -190,19 +190,17 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
     [self disconnect];
     // 清理用户偏好
     [self clearUserDefaults];
-    
     // 在主线程更新UI
     if (self.failed) {
         dispatch_async(dispatch_get_main_queue(), ^ {self.failed(@"用户名或者密码错误！");});
     }
-    
     // 在主线程利用通知发送广播
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:SXLoginResultNotification object:@(NO)];
     });
 }
 
-/** 注册成功 */
+/** 注册成功时调用 */
 - (void)xmppStreamDidRegister:(XMPPStream *)sender
 {
     NSLog(@"注册成功");
@@ -220,7 +218,7 @@ NSString *const SXLoginResultNotification = @"SXLoginResultNotification";
     dispatch_async(dispatch_get_main_queue(), ^ {self.failed(@"注册成功！～请登录");});
 }
 
-/** 注册失败 */
+/** 注册失败时调用 */
 - (void)xmppStream:(XMPPStream *)sender didNotRegister:(DDXMLElement *)error
 {
     NSLog(@"注册失败");
