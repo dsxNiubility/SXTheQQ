@@ -1,11 +1,3 @@
-//
-//  NSFileManager+Tools.h
-//  01-仿QQ
-//
-//  Created by 刘凡 on 14/11/7.
-//  Copyright (c) 2014年 itcast. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 
 @interface NSFileManager(Tools)
